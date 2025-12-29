@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FOFPred: Language-conditioned optical flow forecasting model featuring a unified Vision-Language Model and Diffusion architecture.">
+  <meta name="keywords" content="FOFPred, Optical Flow, VLM, Diffusion, Video Generation, Robotics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FOFPred: Language Driven Future Optical Flow Prediction</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Language Driven Future Optical Flow Prediction</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Kanchana Ranasinghe</a>,</span>
+            <span class="author-block">
+              <a href="#">Honglu Zhou</a>,</span>
+            <span class="author-block">
+              <a href="#">Yu Fang</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Luyu Yang</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Le Xue</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Ran Xu</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Caiming Xiong</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Silvio Savarese</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Michael S. Ryoo</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Juan Carlos Niebles</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Salesforce AI Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./assets/intro.jpg" alt="FOFPred Overview" style="width: 100%; border-radius: 10px;">
+      <br> <br>
+      <h2 class="subtitle has-text-centered">
+        FOFPred is a diffusion-based model that predicts future optical flow from a single image guided by natural language instructions. 
+        <!-- Given an input image and a text prompt describing a desired action, FOFPred generates optical flow predictions that visualize how objects would move to accomplish that action. -->
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="abstract-box">
+          <div class="content has-text-justified">
+            <p>
+              Future motion representations, such as optical flow, offer immense value for control and generative tasks. However, forecasting generalizable spatially dense motion representations remains a key challenge, and learning such forecasting from noisy, real-world data remains relatively unexplored.
+            </p>
+            <p>
+              We introduce FOFPred, a novel language-conditioned optical flow forecasting model featuring a unified Vision-Language Model (VLM) and Diffusion architecture. This unique combination enables strong multimodal reasoning with pixel-level generative fidelity for future motion prediction.
+            </p>
+            <p>
+              Our model is trained on web-scale human activity data—a highly scalable but unstructured source. To extract meaningful signals from this noisy video-caption data, we employ crucial data preprocessing techniques and our unified architecture with strong image pretraining.
+            </p>
+            <p>
+              The resulting trained model is then extended to tackle two distinct downstream tasks in control and generation. Evaluations across robotic manipulation and video generation under language-driven settings establish the cross-domain versatility of FOFPred, confirming the value of a unified VLM-Diffusion architecture and scalable learning from diverse web data for future optical flow prediction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Method Overview. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method Overview</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Our unified VLM-Diffusion architecture combines strong multimodal reasoning capabilities with pixel-level generative fidelity for language-conditioned future optical flow prediction.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <!-- Add method figure here when available -->
+          <!-- <img src="./assets/method.png" alt="Method Overview" style="width: 100%;"> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Method Overview. -->
+
+    <!-- Key Contributions. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Key Contributions</h2>
+
+        <div class="contribution-grid">
+          <div class="contribution-card">
+            <div class="card-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Unified VLM-Diffusion</h3>
+            <p>Leveraging novel architecture that combines Vision-Language Models with Diffusion for Optical Flow Generation.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="card-icon">
+              <i class="fas fa-language"></i>
+            </div>
+            <h3>Language-Conditioned</h3>
+            <p>First approach to leverage natural language for guiding future optical flow prediction in diverse scenarios.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="card-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3>Web-Scale Training</h3>
+            <p>Trained on large-scale human activity data with effective preprocessing for noisy real-world video-caption pairs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Key Contributions. -->
+
+    <!-- Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <h3 class="title is-4">Robotic Manipulation</h3>
+        <div class="content has-text-justified">
+          <p>
+            Our method demonstrates strong performance on robotic manipulation tasks.
+          </p>
+        </div>
+        <!-- Add robotic manipulation results here -->
+
+        <h3 class="title is-4">Video Generation</h3>
+        <div class="content has-text-justified">
+          <p>
+            FOFPred enables controllable video generation through predicted optical flow.
+          </p>
+        </div>
+        <!-- Add video generation results here -->
+
+      </div>
+    </div>
+    <!--/ Results. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{Ran26fofpred,
+  title   = {Language Driven Future Optical Flow Prediction},
+  author  = {Ranasinghe, Kanchana and Zhou, Honglu and Fang, Yu and 
+             Yang, Luyu and Xue, Le and Xu, Ran and Xiong, Caiming and 
+             Savarese, Silvio and Ryoo, Michael S. and Niebles, Juan Carlos},
+  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
