@@ -1,0 +1,605 @@
+/* ============================================
+   FOFPred Project Page Styles
+   Theme: Optical Flow Inspired - Deep Blues with Motion Accents
+   ============================================ */
+
+:root {
+    /* Primary palette - inspired by optical flow visualization */
+    --color-bg: #0a0e17;
+    --color-bg-light: #121a2d;
+    --color-bg-card: #1a2340;
+    
+    /* Flow gradient colors */
+    --color-flow-1: #00d4ff;
+    --color-flow-2: #7b2cbf;
+    --color-flow-3: #ff6b6b;
+    --color-flow-4: #4ecdc4;
+    
+    /* Accent colors */
+    --color-accent: #00d4ff;
+    --color-accent-hover: #33ddff;
+    --color-secondary: #7b2cbf;
+    
+    /* Text colors */
+    --color-text: #e8eaed;
+    --color-text-muted: #9aa0a6;
+    --color-text-light: #ffffff;
+    
+    /* Typography */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Spacing */
+    --section-spacing: 5rem;
+    --container-max: 1100px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text);
+    background: var(--color-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Animated Flow Background */
+.flow-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.flow-line {
+    position: absolute;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--color-flow-1) 20%, 
+        var(--color-flow-2) 50%, 
+        var(--color-flow-3) 80%, 
+        transparent 100%
+    );
+    opacity: 0.15;
+    animation: flowMove 15s linear infinite;
+}
+
+.flow-line:nth-child(1) { top: 15%; animation-delay: 0s; }
+.flow-line:nth-child(2) { top: 35%; animation-delay: -3s; transform: rotate(2deg); }
+.flow-line:nth-child(3) { top: 55%; animation-delay: -6s; transform: rotate(-1deg); }
+.flow-line:nth-child(4) { top: 75%; animation-delay: -9s; transform: rotate(1.5deg); }
+.flow-line:nth-child(5) { top: 90%; animation-delay: -12s; transform: rotate(-2deg); }
+
+@keyframes flowMove {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+
+.hero-content {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.title-accent {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.title-main {
+    display: block;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--color-text-light);
+    background: linear-gradient(135deg, var(--color-text-light) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Authors */
+.authors {
+    margin-bottom: 2.5rem;
+}
+
+.author-list {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    line-height: 2;
+}
+
+.author {
+    display: inline-block;
+    transition: color var(--transition-fast);
+}
+
+.author:hover {
+    color: var(--color-accent);
+}
+
+.affiliation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+.org-logo {
+    height: 24px;
+    width: auto;
+}
+
+/* Action Buttons */
+.links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-smooth);
+    cursor: pointer;
+    border: none;
+}
+
+.btn i {
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    color: var(--color-text-light);
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(0, 212, 255, 0.4);
+}
+
+.btn-secondary {
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: var(--color-bg-light);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Section Styles */
+section {
+    padding: var(--section-spacing) 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+.subsection-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Teaser Section */
+.teaser {
+    text-align: center;
+}
+
+.teaser-img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.teaser-pdf {
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--color-bg-card);
+}
+
+.teaser-placeholder,
+.method-placeholder,
+.result-placeholder,
+.video-placeholder {
+    background: var(--color-bg-card);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--color-text-muted);
+}
+
+.teaser-placeholder i,
+.method-placeholder i,
+.result-placeholder i,
+.video-placeholder i {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.teaser-placeholder p,
+.method-placeholder p,
+.result-placeholder p {
+    font-size: 1.2rem;
+}
+
+.hint {
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+.hint code {
+    background: rgba(0, 212, 255, 0.1);
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    color: var(--color-accent);
+}
+
+/* Abstract Section */
+.abstract-content {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--color-bg-card);
+    border-radius: 16px;
+    padding: 2.5rem;
+    border-left: 4px solid var(--color-accent);
+}
+
+.abstract-content p {
+    margin-bottom: 1.25rem;
+    text-align: justify;
+}
+
+.abstract-content p:last-child {
+    margin-bottom: 0;
+}
+
+.model-name {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* Method Section */
+.method-content {
+    text-align: center;
+}
+
+.method-img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.method-caption {
+    max-width: 800px;
+    margin: 1.5rem auto 0;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Contributions Section */
+.contribution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.contribution-card {
+    background: var(--color-bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-smooth);
+}
+
+.contribution-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+}
+
+.contribution-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 0.75rem;
+}
+
+.contribution-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Results Section */
+.result-subsection {
+    margin-bottom: 3rem;
+}
+
+.result-subsection:last-child {
+    margin-bottom: 0;
+}
+
+/* Video Results Grid */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.video-item {
+    text-align: center;
+}
+
+.video-placeholder {
+    aspect-ratio: 16/9;
+    margin-bottom: 0.75rem;
+}
+
+.video-caption {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* BibTeX Section */
+.bibtex-container {
+    position: relative;
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--color-accent);
+    border-radius: 6px;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.copy-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.bibtex-container pre {
+    padding: 2rem;
+    overflow-x: auto;
+}
+
+.bibtex-container code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--section-spacing);
+}
+
+.footer p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+    color: var(--color-accent-hover);
+}
+
+.copyright {
+    font-size: 0.85rem !important;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --section-spacing: 3.5rem;
+    }
+    
+    body {
+        font-size: 16px;
+    }
+    
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    .hero {
+        padding: 4rem 0 3rem;
+    }
+    
+    .title-accent {
+        font-size: 1.2rem;
+    }
+    
+    .abstract-content {
+        padding: 1.5rem;
+    }
+    
+    .contribution-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+/* Selection color */
+::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-bg-card);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
+
