@@ -389,18 +389,45 @@
         </div>
 
         <br> <br> 
-        <h3 class="title is-4">Video Generation</h3>
+        <h3 class="title is-4">Motion Focused Video Generation</h3>
         <div class="content has-text-justified">
           <p>
             FOFPred enables controllable video generation through predicted optical flow.
           </p>
+        </div>
+
+        <div class="motion-video-grid">
+          <!-- Column Headers -->
+          <div class="grid-header">Baseline (CogVideoX)</div>
+          <div class="grid-header">Predicted Optical Flow</div>
+          <div class="grid-header">Ours</div>
+          
+          <!-- Row 1 -->
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss001_cogvideox.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss001_OF.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss001_ours.mp4" type="video/mp4"></video>
+          
+          <!-- Row 2 -->
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss002_cogvideox.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss002_OF.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss002_ours.mp4" type="video/mp4"></video>
+          
+          <!-- Row 3 -->
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss003_cogvideox.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss003_OF.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss003_ours.mp4" type="video/mp4"></video>
+          
+          <!-- Row 4 -->
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss004_cogvideox.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss004_OF.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss004_ours.mp4" type="video/mp4"></video>
         </div>
         
         <br> <br> <br>
         <h3 class="title is-4">Robotic Manipulation</h3>
         <div class="content has-text-justified">
           <p>
-            Our method demonstrates strong performance on robotic manipulation tasks.
+            We illustrate examples from the RoboTwin environment where we apply a fine-tuned version of our FOFPred model to perform language-driven robotic manipulation tasks. For further details on implementation and experimentations, please refer to our code and paper.
           </p>
         </div>
 

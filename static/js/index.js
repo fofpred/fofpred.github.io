@@ -1,6 +1,48 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 
+// Video autoplay management using Intersection Observer
+// Plays videos only when visible, pauses when scrolled out of view
+// This improves performance and battery life, especially on mobile
+function initVideoAutoplay() {
+  const videos = document.querySelectorAll('video[autoplay]');
+  
+  if (!videos.length) return;
+  
+  // Remove autoplay attribute to manually control playback
+  videos.forEach(video => {
+    video.removeAttribute('autoplay');
+    video.pause();
+  });
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '50px', // Start loading slightly before visible
+    threshold: 0.25 // Play when 25% visible
+  };
+  
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        // Video is visible - play it
+        video.play().catch(() => {
+          // Autoplay was prevented (rare with muted videos)
+          // Could add a play button overlay here if needed
+        });
+      } else {
+        // Video is not visible - pause it
+        video.pause();
+      }
+    });
+  }, observerOptions);
+  
+  videos.forEach(video => {
+    videoObserver.observe(video);
+  });
+}
+
+
 // Lightbox functionality
 function initLightbox() {
   const lightbox = document.getElementById('lightbox');
@@ -167,5 +209,8 @@ $(document).ready(function() {
 
     // Initialize lightbox
     initLightbox();
+
+    // Initialize video autoplay with Intersection Observer
+    initVideoAutoplay();
 
 })
