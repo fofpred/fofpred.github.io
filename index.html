@@ -16,13 +16,13 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
@@ -237,8 +237,155 @@
 
         <div class="content has-text-justified">
           <p>
-            TBA
+            We first visualize optical flow predictions of our base model.
+            Then we showcase our model's performance on the two downstream tasks: 
+            robotic manipulation and video generation.
           </p>
+        </div>
+
+        <h3 class="title is-4">Optical Flow Prediction</h3>
+        <div class="content has-text-justified">
+          <p>
+            We visualize optical flow predictions of our base model for a randomly selected 
+            set of image-prompt pairs, highlighting both the strengths and limitations of our method.
+          </p>
+        </div>
+
+        <!-- Image Pair Gallery -->
+        <div class="flow-gallery">
+          <div class="gallery-container">
+            <!-- Pair 1 -->
+            <div class="image-pair" data-pair="1">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg1a.png" alt="Flow prediction 1a">
+                  <p class="prompt-text">"Moving the water bottle from right to left."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg1b.png" alt="Flow prediction 1b">
+                  <p class="prompt-text">"Lifting the water bottle up."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 2 -->
+            <div class="image-pair" data-pair="2" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg2a.png" alt="Flow prediction 2a">
+                  <p class="prompt-text">"Pushing the bowl from left to right."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg2b.png" alt="Flow prediction 2b">
+                  <p class="prompt-text">"Pulling the bowl from right to left."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 3 -->
+            <div class="image-pair" data-pair="3" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg3a.png" alt="Flow prediction 3a">
+                  <p class="prompt-text">"Moving the cat from left to right."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg3b.png" alt="Flow prediction 3b">
+                  <p class="prompt-text">"Moving the cat up."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 4 -->
+            <div class="image-pair" data-pair="4" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg4a.png" alt="Flow prediction 4a">
+                  <p class="prompt-text">"Moving the penguin from left to right."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg4b.png" alt="Flow prediction 4b">
+                  <p class="prompt-text">"Moving the penguin right to left."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 5 -->
+            <div class="image-pair" data-pair="5" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg5a.png" alt="Flow prediction 5a">
+                  <p class="prompt-text">"Moving the baby elephant from right to left."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg5b.png" alt="Flow prediction 5b">
+                  <p class="prompt-text">"Moving the baby elephant from left to right."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 6 -->
+            <div class="image-pair" data-pair="6" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg6a.png" alt="Flow prediction 6a">
+                  <p class="prompt-text">"Moving the burger up."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg6b.png" alt="Flow prediction 6b">
+                  <p class="prompt-text">"Moving the burger left to right."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 7 -->
+            <div class="image-pair" data-pair="7" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg7a.png" alt="Flow prediction 7a">
+                  <p class="prompt-text">"Moving the cat from right to left."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg7b.png" alt="Flow prediction 7b">
+                  <p class="prompt-text">"Moving the cat from left to right."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pair 8 -->
+            <div class="image-pair" data-pair="8" style="display: none;">
+              <div class="pair-grid">
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg8a.png" alt="Flow prediction 8a">
+                  <p class="prompt-text">"Moving the cup from left to right."</p>
+                </div>
+                <div class="pair-item">
+                  <img src="./assets/of_images/eg8b.png" alt="Flow prediction 8b">
+                  <p class="prompt-text">"Moving the knife from left to right."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="gallery-nav">
+            <button class="nav-btn nav-prev" id="prevPair">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="gallery-dots" id="galleryDots">
+              <span class="dot active" data-pair="1"></span>
+              <span class="dot" data-pair="2"></span>
+              <span class="dot" data-pair="3"></span>
+              <span class="dot" data-pair="4"></span>
+              <span class="dot" data-pair="5"></span>
+              <span class="dot" data-pair="6"></span>
+              <span class="dot" data-pair="7"></span>
+              <span class="dot" data-pair="8"></span>
+            </div>
+            <button class="nav-btn nav-next" id="nextPair">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
 
         <!-- <h3 class="title is-4">Robotic Manipulation</h3>
@@ -290,6 +437,13 @@
     </div>
   </div>
 </footer>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img class="lightbox-image" src="" alt="Full size image">
+  <div class="lightbox-caption"></div>
+</div>
 
 </body>
 </html>

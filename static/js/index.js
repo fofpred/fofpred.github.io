@@ -1,24 +1,126 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
 
-var interp_images = [];
-function preloadInterpolationImages() {
-  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
-    interp_images[i] = new Image();
-    interp_images[i].src = path;
+// Lightbox functionality
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = lightbox.querySelector('.lightbox-image');
+  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  // Get all gallery images
+  const galleryImages = document.querySelectorAll('.pair-item img');
+
+  // Open lightbox on image click
+  galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+      const caption = img.closest('.pair-item').querySelector('.prompt-text');
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = caption ? caption.textContent : '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close lightbox on close button click
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // Close lightbox on background click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Close lightbox on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
   }
 }
 
-function setInterpolationImage(i) {
-  var image = interp_images[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
-}
 
+// Image Pair Gallery Navigation
+function initFlowGallery() {
+  const pairs = document.querySelectorAll('.image-pair');
+  const dots = document.querySelectorAll('.gallery-dots .dot');
+  const prevBtn = document.getElementById('prevPair');
+  const nextBtn = document.getElementById('nextPair');
+  
+  if (pairs.length === 0) return;
+  
+  let currentPair = 1;
+  const totalPairs = pairs.length;
+
+  function showPair(pairNum) {
+    // Hide all pairs
+    pairs.forEach(pair => {
+      pair.style.display = 'none';
+    });
+    
+    // Show the selected pair
+    const activePair = document.querySelector(`.image-pair[data-pair="${pairNum}"]`);
+    if (activePair) {
+      activePair.style.display = 'block';
+    }
+    
+    // Update dots
+    dots.forEach(dot => {
+      dot.classList.remove('active');
+      if (parseInt(dot.dataset.pair) === pairNum) {
+        dot.classList.add('active');
+      }
+    });
+    
+    currentPair = pairNum;
+  }
+
+  // Previous button
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      let newPair = currentPair - 1;
+      if (newPair < 1) newPair = totalPairs;
+      showPair(newPair);
+    });
+  }
+
+  // Next button
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      let newPair = currentPair + 1;
+      if (newPair > totalPairs) newPair = 1;
+      showPair(newPair);
+    });
+  }
+
+  // Dot navigation
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const pairNum = parseInt(dot.dataset.pair);
+      showPair(pairNum);
+    });
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      let newPair = currentPair - 1;
+      if (newPair < 1) newPair = totalPairs;
+      showPair(newPair);
+    } else if (e.key === 'ArrowRight') {
+      let newPair = currentPair + 1;
+      if (newPair > totalPairs) newPair = 1;
+      showPair(newPair);
+    }
+  });
+}
 
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
@@ -58,21 +160,12 @@ $(document).ready(function() {
     	});
     }
 
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
-    preloadInterpolationImages();
-
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
-    });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
-
     bulmaSlider.attach();
+
+    // Initialize flow gallery navigation
+    initFlowGallery();
+
+    // Initialize lightbox
+    initLightbox();
 
 })
