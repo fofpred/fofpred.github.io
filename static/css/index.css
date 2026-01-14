@@ -27,6 +27,15 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
+.teaser .subtitle {
+  color: #1a1a1a;
+}
+
+/* Darker text for better readability in content sections */
+.content.has-text-justified p {
+  color: #1a1a1a;
+}
+
 
 .publication-title {
 }
@@ -600,6 +609,17 @@ body {
 /* Make gallery images clickable */
 .pair-item img {
   cursor: zoom-in;
+}
+
+/* Make standalone images with lightbox trigger clickable */
+.lightbox-trigger {
+  cursor: zoom-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lightbox-trigger:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Robot Video Grid */

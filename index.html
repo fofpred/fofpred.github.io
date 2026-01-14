@@ -135,7 +135,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./assets/intro.jpg" alt="FOFPred Overview" style="width: 100%; border-radius: 10px;">
+      <img src="./assets/intro.jpg" alt="FOFPred Overview" class="lightbox-trigger" style="width: 100%; border-radius: 10px;">
       <br> <br>
       <h2 class="subtitle has-text-centered">
         FOFPred is a diffusion-based model that predicts future optical flow from a single image guided by natural language instructions. 
@@ -393,14 +393,16 @@
         <div class="content has-text-justified">
           <p>
             FOFPred enables controllable video generation through predicted optical flow.
+            Both baseline and ours use the same first-frame image and prompt to generate videos.
+            For ours, we visualize both the predicted optical flow and the final generated video.
           </p>
         </div>
 
         <div class="motion-video-grid">
           <!-- Column Headers -->
           <div class="grid-header">Baseline (CogVideoX)</div>
-          <div class="grid-header">Predicted Optical Flow</div>
-          <div class="grid-header">Ours</div>
+          <div class="grid-header">Predicted OF (Ours)</div>
+          <div class="grid-header">Generated Video (Ours)</div>
           
           <!-- Row 1 -->
           <video autoplay loop muted playsinline><source src="./assets/motion_videos/ss001_cogvideox.mp4" type="video/mp4"></video>

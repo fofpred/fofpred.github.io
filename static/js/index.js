@@ -65,6 +65,19 @@ function initLightbox() {
     });
   });
 
+  // Get standalone lightbox-trigger images (like intro image)
+  const triggerImages = document.querySelectorAll('.lightbox-trigger');
+
+  triggerImages.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = img.alt || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
   // Close lightbox on close button click
   lightboxClose.addEventListener('click', closeLightbox);
 
